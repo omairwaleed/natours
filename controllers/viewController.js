@@ -46,7 +46,15 @@ exports.getLogin = catchAsync(async (req, res) => {
     title: 'Login',
   });
 });
-
+exports.getSignup = catchAsync(async (req, res) => {
+  res.setHeader(
+    'Content-Security-Policy',
+    " script-src-elem 'self' https://cdn.jsdelivr.net https://js.stripe.com/v3/ ;"
+  );
+  res.status(200).render('signup', {
+    title: 'SignUp',
+  });
+});
 exports.getAccount = catchAsync(async (req, res) => {
   res.setHeader(
     'Content-Security-Policy',

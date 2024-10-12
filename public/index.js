@@ -1,4 +1,5 @@
 import { login, logout } from './login';
+import { signup } from './signup';
 import '@babel/polyfill';
 import { updateData } from './updateSeetings';
 import { bookTour } from './stripe';
@@ -12,6 +13,13 @@ document.querySelector('.form--login')?.addEventListener('submit', (e) => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
   login(email, password);
+});
+document.querySelector('.form--signup')?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const name = document.getElementById('name').value;
+  signup(email, password, name);
 });
 
 document.querySelector('.form-user-data')?.addEventListener('submit', (e) => {

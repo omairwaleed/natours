@@ -20,6 +20,7 @@ router.get(
   viewController.getOverview
 );
 router.get('/login', viewController.getLogin);
+router.get('/signup', viewController.getSignup);
 router.get('/tour/:slug', viewController.getTour);
 
 module.exports = router;
