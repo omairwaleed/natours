@@ -48,8 +48,6 @@ exports.deletsUser = factory.deleteOne(User);
 exports.updateUser = factory.updateOne(User);
 
 exports.updateMe = catchAsync(async (req, res, next) => {
-  console.log(req.file);
-  console.log(req.body);
   /*
  1-) if user update password error
  
@@ -59,7 +57,6 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   }
   const filteredObj = filterObj(req.body, 'name', 'email');
   if (req.file) filteredObj.photo = req.file.filename;
-  console.log(filteredObj);
   const user = await User.findByIdAndUpdate(req.user.id, filteredObj, {
     new: true,
     runValidators: true,
@@ -78,7 +75,6 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
       runValidators: true,
     }
   );
-  console.log(user);
 
   res.status(204).json({
     message: 'success deletion',

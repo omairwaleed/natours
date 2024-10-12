@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.use('/:id/reviews', reviewRouter);
 router.param('id', (req, res, next, val) => {
-  console.log(`Tour id is ${val}`);
   next();
 });
 router

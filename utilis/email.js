@@ -10,9 +10,7 @@ module.exports = class Email {
     this.from = `omair waleed <${process.env.EMAIL_FROM}>`;
   }
   createTransport() {
-    console.log(process.env.NODE_ENV, process.env.NODE_ENV.length);
     if (process.env.NODE_ENV === 'production') {
-      console.log('a');
       return nodemailer.createTransport({
         service: 'SendGrid',
         port: '25',
@@ -26,7 +24,6 @@ module.exports = class Email {
         },
       });
     } else {
-      console.log('b');
       return nodemailer.createTransport({
         host: 'sandbox.smtp.mailtrap.io',
         port: '2525',

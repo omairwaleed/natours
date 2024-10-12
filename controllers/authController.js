@@ -12,7 +12,6 @@ const signToken = (userID) => {
 };
 const createSentToken = (user, statusCode, res) => {
   const token = signToken(user._id);
-  console.log(process.env.JWT_COOKIE_EXPIRES_IN, process.env.NODE_ENV);
   res.cookie('JWT', token, {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
@@ -68,10 +67,8 @@ exports.protect = catchAsync(async (req, res, next) => {
     req.headers.authorization.startsWith('Bearer')
   ) {
     token = req.headers.authorization.split(' ')[1];
-    console.log(token);
   } else if (req.cookies.JWT) {
     token = req.cookies.JWT;
-    console.log('cookie', token);
   }
   if (!token) {
     return next(
@@ -95,7 +92,6 @@ exports.protect = catchAsync(async (req, res, next) => {
 });
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
-    console.log(req.user);
     if (!roles.includes(req.user.role)) {
       return next(
         new AppError("You don't have permission to do this action", 403)
@@ -108,7 +104,6 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   // 1-)get user from collection
   const user = await User.findById(req.user.id).select('+password');
   // 2-)check if posted password is correctPaasword
-  console.log(user);
   if (!user.correctPaasword(req.body.passwordCurrent, user.password))
     return next(new AppError('Your current password is wrong', 401));
   // 3-)if so update password

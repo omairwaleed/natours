@@ -4,7 +4,6 @@ import { updateData } from './updateSeetings';
 import { bookTour } from './stripe';
 
 document.getElementById('logout')?.addEventListener('click', (e) => {
-  console.log('logout');
   e.preventDefault();
   logout();
 });
@@ -21,7 +20,6 @@ document.querySelector('.form-user-data')?.addEventListener('submit', (e) => {
   form.append('name', document.getElementById('name').value);
   form.append('email', document.getElementById('email').value);
   form.append('photo', document.getElementById('photo').files[0]);
-  console.log(form);
   updateData(form, 'data');
 });
 

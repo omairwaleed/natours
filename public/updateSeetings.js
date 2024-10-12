@@ -8,8 +8,8 @@ export const updateData = async (data, type) => {
       method: 'Patch',
       url:
         type === 'password'
-          ? 'http://localhost:7000/api/v1/users/updatePassword'
-          : 'http://localhost:7000/api/v1/users/updateMe',
+          ? '/api/v1/users/updatePassword'
+          : '/api/v1/users/updateMe',
       data,
     });
     if (res.data.status === 'success') {

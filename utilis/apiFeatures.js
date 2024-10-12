@@ -12,7 +12,6 @@ class APIFeatures {
     //advanced filtering  //http://127.0.0.1:3000/api/v1/tours?duartion[age]=5
     let queryStr = JSON.stringify(queryOpb);
     queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
-    console.log(JSON.parse(queryStr));
     this.query = this.query.find(JSON.parse(queryStr));
     return this;
   }

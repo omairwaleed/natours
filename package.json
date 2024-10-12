@@ -8,7 +8,7 @@
     "start:prod": "set NODE_ENV=production&& nodemon server.js",
     "debug": "ndb server.js",
     "watch:js": "parcel watch ./public/index.js --out-dir ./public --out-file bundle.js",
-    "build:js": "parcel watch ./public/index.js --out-dir ./public --out-file bundle.js"
+    "build:js": "parcel build ./public/index.js --out-dir ./public --out-file bundle.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "axios": "^1.7.7",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
+    "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",

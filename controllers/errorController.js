@@ -18,7 +18,6 @@ module.exports = (err, req, res, next) => {
     }
   } else {
     //wrong id
-    console.log(err);
     if (err.name === 'CastError') {
       const message = `Invalid ${err.path} : ${err.value}`;
       err = new AppError(message, 400);
