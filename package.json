@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "engines": {
+    "node": "20.15.0"
+  },
   "scripts": {
-    "start": "nodemon server.js",
-    "start:prod": "set NODE_ENV=production&& nodemon server.js",
+    "dev": "nodemon server.js",
+    "start": "set NODE_ENV=production&& node server.js",
     "debug": "ndb server.js",
     "watch:js": "parcel watch ./public/index.js --out-dir ./public --out-file bundle.js",
     "build:js": "parcel build ./public/index.js --out-dir ./public --out-file bundle.js"
